@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import { connect } from 'react-redux';
 
 class App extends Component {
   render() {
@@ -8,7 +9,7 @@ class App extends Component {
         <h1>DevMountain Hackathon</h1>
         <h3>Guest List:</h3>
         <ul>
-          {/*guest list from store*/}
+          {this.props.guests}
         </ul>
         <div className="add-guest">
           Add guest: <input type="" className=""/>
@@ -19,4 +20,10 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    guests: state.guests
+  }
+}
+
+export default connect(mapStateToProps)(App);
